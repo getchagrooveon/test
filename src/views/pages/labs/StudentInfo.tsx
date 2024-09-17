@@ -1,4 +1,5 @@
 import type { FunctionComponent } from 'react'
+
 import Image from 'next/image'
 
 interface StudentInfoProps {

@@ -1,6 +1,9 @@
-import OpenDialogOnElementClick from '@/components/dialogs/OpenDialogOnElementClick'
 import type { FunctionComponent } from 'react'
-import Button, { ButtonProps } from '@mui/material/Button'
+
+import type { ButtonProps } from '@mui/material/Button';
+import Button from '@mui/material/Button'
+
+import OpenDialogOnElementClick from '@/components/dialogs/OpenDialogOnElementClick'
 import RequestLab from '@/components/dialogs/request-lab/request-lab'
 
 interface RequestProps {}
@@ -12,6 +15,7 @@ const Request: FunctionComponent<RequestProps> = () => {
     className:
       'bg-primary-purple text-white font-medium text-sm rounded-4xl px-6 py-2 font-sans cursor-pointer btn'
   }
+  
   return (
     <div className='p-6 flex items-center justify-end bg-white'>
       <OpenDialogOnElementClick

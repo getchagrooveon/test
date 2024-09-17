@@ -67,7 +67,7 @@ const Logo = ({ color }: { color?: CSSProperties['color'] }) => {
   }, [isHovered, layout])
 
   return (
-    <div className='flex items-center'>
+    <div className='flex items-center justify-center'>
       <VuexyLogo className='text-2xl text-primary' />
       <LogoText
         color={color}

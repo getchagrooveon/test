@@ -202,6 +202,6 @@ code {
   padding-left: 35px;
 }
 
-#custom-checkbox:checked span{
-  background-color: #7D47F9 !important;
+.custom-checkbox input:checked+svg path{
+  fill: #7D47F9 !important;
 }

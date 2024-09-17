@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // MUI Imports
 import Dialog from '@mui/material/Dialog'
@@ -12,12 +12,14 @@ import DialogActions from '@mui/material/DialogActions'
 import Checkbox from '@mui/material/Checkbox'
 
 // Component Imports
-import DialogCloseButton from '../DialogCloseButton'
 import { Grid, Typography } from '@mui/material'
+
 import { Search } from 'lucide-react'
+
+import DialogCloseButton from '../DialogCloseButton'
+
 import CustomTextField from '@/@core/components/mui/TextField'
-import { Lab } from '@/types/apps/labsTypes'
-import { toast } from 'react-toastify'
+import type { Lab } from '@/types/apps/labsTypes'
 
 type RequestLabProps = {
   open: boolean
@@ -39,7 +41,6 @@ const mockData: Partial<Lab>[] = [
 const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
   // States
   const [text, setText] = useState('')
-  const [list, setList] = useState<Partial<Lab>[]>(data)
   const [filteredList, setFilteredList] = useState<Partial<Lab>[]>(data)
   const [labList, setLabList] = useState<Partial<Lab>[]>([])
 
@@ -47,15 +48,18 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
     setOpen(false)
     setText('')
   }
+
   const toggleLabList = (id: number) => {
     setLabList(prevLabList => {
       if (prevLabList.some(lab => lab.id === id)) {
         return prevLabList.filter(lab => lab.id !== id)
       } else {
-        const labToAdd = list.find(lab => lab.id === id)
+        const labToAdd = data.find(lab => lab.id === id)
+
         if (labToAdd) {
           return [...prevLabList, labToAdd]
         }
+
         return prevLabList
       }
     })
@@ -63,14 +67,19 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchText = e.target.value
+
     setText(searchText)
 
-    const filtered = list.filter(item => item.name?.toLowerCase().includes(searchText.toLowerCase()))
+    const filtered = data.filter(item => item.name?.toLowerCase().includes(searchText.toLowerCase()))
+
     setFilteredList(filtered)
   }
+
   const sendForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
-    const ids = list.filter(item => item.id)
+
+    // const ids = list.filter(item => item.id)
+
     // await updateList(ids)
     //   .unwrap()
     //   .then(() => {
@@ -79,6 +88,7 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
     //   })
     //   .catch(error => toast.error(error))
   }
+
   return (
     <Dialog open={open} onClose={handleClose} sx={{ '& .MuiDialog-paper': { overflow: 'visible' } }}>
       <DialogCloseButton onClick={() => setOpen(false)} disableRipple>
@@ -91,7 +101,7 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
         </Typography>
       </DialogTitle>
       <form onSubmit={sendForm}>
-        <DialogContent className='overflow-visible pbs-0 p-6 sm:pli-16 min-h-[500px]'>
+        <DialogContent className='overflow-visible pbs-0 p-6 sm:pli-16 min-h-[450px]'>
           <Grid container spacing={6}>
             <Grid item xs={12}>
               <div className='relative'>
@@ -109,7 +119,7 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
             </Grid>
           </Grid>
           <Grid item xs={12} className='mt-6 font-medium text-lg'>
-            {list.length} options
+            {filteredList.length} {filteredList.length === 1 ? 'option' : 'options'}
           </Grid>
           <Grid item xs={12} className='mt-4'>
             <ul className='list-none'>
@@ -117,8 +127,8 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
                 <li key={item.id} className='flex gap-2 items-center justify-start'>
                   <Checkbox
                     onChange={() => item?.id !== undefined && toggleLabList(item.id)}
-                    color='default'
                     checked={item.id !== undefined && labList.some(lab => lab.id === item.id)}
+                    className='custom-checkbox'
                   />
                   {item.name}
                 </li>

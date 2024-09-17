@@ -1,5 +1,8 @@
 // MUI Imports
+import { headers } from 'next/headers'
+
 import Button from '@mui/material/Button'
+
 // Type Imports
 
 import type { ChildrenType } from '@core/types'
@@ -17,9 +20,7 @@ import Header from '@components/layout/horizontal/Header'
 import Navbar from '@components/layout/vertical/Navbar'
 import VerticalFooter from '@components/layout/vertical/Footer'
 import HorizontalFooter from '@components/layout/horizontal/Footer'
-import Customizer from '@core/components/customizer'
 import ScrollToTop from '@core/components/scroll-to-top'
-import { headers } from 'next/headers'
 
 // Config Imports
 import { i18n } from '@configs/i18n'
@@ -37,13 +38,10 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
   const systemMode = getSystemMode()
 
   const headersList = headers()
-  const currentUrl = headersList.get('referer') || ''
-
-  const url = new URL(currentUrl)
-  const pathname = url.pathname
-
+  const currentUrl = headersList.get('referer') || '' 
+  
   return (
-    <div className={pathname?.includes('/pages/labs') ? 'custom-color' : ''}>
+    <div className={currentUrl?.includes('labs') ? 'custom-color' : ''}>
       <Providers direction={direction}>
         <AuthGuard locale={params.lang}>
           <LayoutWrapper
@@ -71,7 +69,7 @@ const Layout = async ({ children, params }: ChildrenType & { params: { lang: Loc
               <i className='tabler-arrow-up' />
             </Button>
           </ScrollToTop>
-          <Customizer dir={direction} />
+          {/* <Customizer dir={direction} /> */}
         </AuthGuard>
       </Providers>
     </div>

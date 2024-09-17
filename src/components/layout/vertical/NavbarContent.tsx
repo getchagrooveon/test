@@ -20,6 +20,12 @@ import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
 // Vars
 const shortcuts: ShortcutsType[] = [
   {
+    url: '/apps/user/list',
+    icon: 'tabler-user',
+    title: 'Users',
+    subtitle: 'Manage Users'
+  },
+  {
     url: '/apps/calendar',
     icon: 'tabler-calendar',
     title: 'Calendar',
@@ -31,12 +37,7 @@ const shortcuts: ShortcutsType[] = [
     title: 'Invoice App',
     subtitle: 'Manage Accounts'
   },
-  {
-    url: '/apps/user/list',
-    icon: 'tabler-user',
-    title: 'Users',
-    subtitle: 'Manage Users'
-  },
+
   {
     url: '/apps/roles',
     icon: 'tabler-users-group',

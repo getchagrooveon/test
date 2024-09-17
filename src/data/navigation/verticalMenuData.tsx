@@ -200,11 +200,7 @@ const verticalMenuData = (dictionary: Awaited<ReturnType<typeof getDictionary>>)
         icon: 'tabler-calendar',
         href: '/apps/calendar'
       },
-      {
-        label: dictionary['navigation'].kanban,
-        icon: 'tabler-copy',
-        href: '/apps/kanban'
-      },
+
       {
         label: dictionary['navigation'].invoice,
         icon: 'tabler-file-description',

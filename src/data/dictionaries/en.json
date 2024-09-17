@@ -1,6 +1,8 @@
 {
   "navigation": {
     "dashboards": "Dashboards",
+    "students": "Students",
+    "labs": "Labs",
     "crm": "CRM",
     "analytics": "Analytics",
     "eCommerce": "eCommerce",

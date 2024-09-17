@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 // MUI Imports
+import Image from 'next/image'
+
 import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
 // Type Imports
@@ -18,7 +20,6 @@ import type { Locale } from '@configs/i18n'
 // Component Imports
 import VerticalNav, { NavHeader, NavCollapseIcons } from '@menu/vertical-menu'
 import VerticalMenu from './VerticalMenu'
-import Logo from '@components/layout/shared/Logo'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
@@ -121,9 +122,10 @@ const Navigation = (props: Props) => {
     >
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
-        <Link href={getLocalizedUrl('/', locale as Locale)}>
-          <Logo />
+        <Link href={getLocalizedUrl('/', locale as Locale)} className='mx-auto mt-3'>
+          <Image src='/images/logos/Logo.png' width={40} height={40} alt='Main logo' />
         </Link>
+
         {!(isCollapsed && !isHovered) && (
           <NavCollapseIcons
             lockedIcon={<i className='tabler-circle-dot text-xl' />}

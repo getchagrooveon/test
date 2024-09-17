@@ -1,6 +1,8 @@
 {
   "navigation": {
     "dashboards": "Tableaux de bord",
+    "students": "étudiant",
+    "labs": "Labs",
     "crm": "GRC",
     "analytics": "Analytique",
     "eCommerce": "commerce électronique",
