@@ -78,6 +78,8 @@ const RequestLab = ({ open, setOpen, data = mockData }: RequestLabProps) => {
   const sendForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
 
+    // function to send data to backend
+
     // const ids = list.filter(item => item.id)
 
     // await updateList(ids)

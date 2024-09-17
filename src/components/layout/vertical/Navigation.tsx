@@ -6,10 +6,9 @@ import { useEffect, useRef } from 'react'
 // Next Imports
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-
-// MUI Imports
 import Image from 'next/image'
 
+// MUI Imports
 import { styled, useColorScheme, useTheme } from '@mui/material/styles'
 
 // Type Imports
@@ -122,7 +121,7 @@ const Navigation = (props: Props) => {
     >
       {/* Nav Header including Logo & nav toggle icons  */}
       <NavHeader>
-        <Link href={getLocalizedUrl('/', locale as Locale)} className='mx-auto mt-3'>
+        <Link href={getLocalizedUrl('/pages/labs', locale as Locale)} className='mx-auto mt-3'>
           <Image src='/images/logos/Logo.png' width={40} height={40} alt='Main logo' />
         </Link>
 
